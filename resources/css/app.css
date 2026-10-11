@@ -1,0 +1,144 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../../app/**/*.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+
+    /* ZUS Coffee inspired palette */
+    --color-navy: #132d5e;
+    --color-navy-900: #0c1f44;
+    --color-secondary: #244d86;
+    --color-accent: #3b75b5;
+    --color-accent-50: #eaf1fa;
+    --color-accent-100: #d3e2f3;
+    --color-surface: #f3f6fb;
+    --color-ink: #1f2937;
+    --color-success: #16a34a;
+    --color-warning: #f59e0b;
+    --color-danger: #dc2626;
+}
+
+@layer base {
+    body {
+        @apply bg-surface text-ink antialiased;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer components {
+    /* Buttons */
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold whitespace-nowrap transition focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60;
+    }
+    .btn-sm {
+        @apply px-3 py-1.5 text-xs;
+    }
+    .btn-primary {
+        @apply bg-navy text-white shadow-sm hover:bg-secondary;
+    }
+    .btn-accent {
+        @apply bg-accent text-white shadow-sm hover:bg-secondary;
+    }
+    .btn-secondary {
+        @apply border border-slate-200 bg-white text-ink shadow-sm hover:bg-slate-50;
+    }
+    .btn-success {
+        @apply bg-success text-white shadow-sm hover:bg-green-700;
+    }
+    .btn-danger {
+        @apply bg-danger text-white shadow-sm hover:bg-red-700;
+    }
+    .btn-ghost {
+        @apply text-secondary hover:bg-accent-50;
+    }
+
+    /* Forms */
+    .form-label {
+        @apply mb-1.5 block text-sm font-medium text-slate-700;
+    }
+    .form-input {
+        @apply block w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-ink shadow-sm placeholder:text-slate-400 focus:border-accent focus:ring-2 focus:ring-accent/30 focus:outline-none disabled:bg-slate-100 disabled:text-slate-500;
+    }
+    .form-input-error {
+        @apply border-danger focus:border-danger focus:ring-danger/30;
+    }
+    .form-error {
+        @apply mt-1 text-xs font-medium text-danger;
+    }
+    .form-help {
+        @apply mt-1 text-xs text-slate-500;
+    }
+    .form-checkbox {
+        @apply h-4 w-4 rounded border-slate-300 text-accent focus:ring-accent;
+    }
+
+    /* Cards & tables */
+    .card {
+        @apply rounded-xl border border-slate-200/80 bg-white shadow-sm;
+    }
+    .card-header {
+        @apply flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 px-5 py-4;
+    }
+    .card-title {
+        @apply text-base font-semibold text-navy;
+    }
+    .card-body {
+        @apply p-5;
+    }
+    .table-wrap {
+        @apply overflow-x-auto;
+    }
+    .table {
+        @apply min-w-full divide-y divide-slate-100 text-sm;
+    }
+    .table thead th {
+        @apply bg-slate-50 px-4 py-3 text-left text-xs font-semibold tracking-wide text-slate-500 uppercase;
+    }
+    .table tbody td {
+        @apply px-4 py-3 align-middle text-slate-700;
+    }
+    .table tbody tr {
+        @apply transition hover:bg-accent-50/40;
+    }
+
+    /* Sidebar */
+    .nav-link {
+        @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-blue-100/80 transition hover:bg-white/10 hover:text-white;
+    }
+    .nav-link-active {
+        @apply bg-white/15 text-white shadow-inner;
+    }
+    .nav-sublink {
+        @apply flex items-center gap-2 rounded-md py-1.5 pr-3 pl-11 text-[13px] text-blue-100/70 transition hover:bg-white/10 hover:text-white;
+    }
+    .nav-sublink-active {
+        @apply bg-white/10 font-semibold text-white;
+    }
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    body {
+        background: #fff !important;
+    }
+    .card {
+        box-shadow: none !important;
+        border-color: #e5e7eb !important;
+    }
+    .print-full {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
